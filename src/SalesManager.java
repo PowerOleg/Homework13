@@ -1,24 +1,24 @@
 import java.util.Arrays;
 
 public class SalesManager {
-    protected int[] sales;
+    protected long[] sales;
 
-    public SalesManager(int[] sales) {
+    public SalesManager(long[] sales) {
         this.sales = sales;
     }
 
-    public int max() {
-        int max = -1;
-        for (int sale : sales) {
+    public long max() {
+        long max = -1;
+        for (long sale : sales) {
             if (sale > max) {
                 max = sale;
             }
         }
         return max;
     }
-    public int min() {
-        int min = Integer.MAX_VALUE;
-        for (int sale : sales) {
+    public long min() {
+        long min = Integer.MAX_VALUE;
+        for (long sale : sales) {
             if (sale < min) {
                 min = sale;
             }
@@ -26,10 +26,10 @@ public class SalesManager {
         return min;
     }
 
-    public int averageSale() {
+    public long averageSale() {
         int offset = 0;
-        int max = max();
-        int min = min();
+        long max = max();
+        long min = min();
         for (int i = 0; i < sales.length; i++) {
         if (sales[i] == min) {
             sales[i] = 0;
@@ -41,9 +41,9 @@ public class SalesManager {
             sales[i - offset] = sales[i];
         }
         }
-        int[] newSales = Arrays.copyOf(sales, (sales.length - offset));
+        long[] newSales = Arrays.copyOf(sales, (sales.length - offset));
         int average = 0;
-        for (int sale : newSales) {
+        for (long sale : newSales) {
             average += sale;
         }
         return average / newSales.length;
